@@ -1,0 +1,37 @@
+{
+  "name": "ECHECK",
+  "version": "1.0.1",
+  "description": "Приложение для анализа цен просмотренных объявлений",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "cookies",
+    "webRequest",
+    "notifications"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+
+    "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "lib/jquery-3.6.0.min.js",
+        "parse.js",
+        "mark.js",
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}
